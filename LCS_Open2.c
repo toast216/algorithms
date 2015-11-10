@@ -6,15 +6,13 @@
 int **weights;
 int N,M;
 
-void set_value(int id,int row,int col,int value);
-int get_value(int id,int row,int col);
+void set_value(int row,int col,int value);
+int get_value(int row,int col);
 int average_chunk;
 int max_threads;
 
 int main(int argc, char **argv)
 {
-
-        int   myid;
 
         if(argc<3) 
 	{
@@ -53,12 +51,11 @@ int main(int argc, char **argv)
 			{
 	                        if(string2[i-1]==string1[j-1])
 				{
-                                int myid = omp_get_thread_num();
-                                set_value(myid,i,j,get_value(myid,i-1,j-1)+1);
+                                set_value(i,j,get_value(i-1,j-1)+1);
                         }
 			else
 			{
-                                set_value(myid,i,j,max(get_value(myid,i-1,j),get_value(myid,i,j-1)));
+                                set_value(i,j,max(get_value(i-1,j),get_value(i,j-1)));
                         }
                 }
         }
@@ -77,14 +74,14 @@ int main(int argc, char **argv)
 }
 
 
-int get_value(int id,int row,int col)
+int get_value(int row,int col)
 {
         int value = -1;
         value = weights[row][col];
         return value;
 }
 
-void set_value(int id,int row,int col,int value)
+void set_value(int row,int col,int value)
 {
         weights[row][col] = value;
 }
