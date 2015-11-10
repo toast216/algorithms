@@ -1,0 +1,27 @@
+MAT-VEC(A,x)
+1.	n=A.rows
+2.	y a new vector of length n
+3.	parallel for i=1 to n
+4.	yi = 0
+5.	parallel for i=1 to n
+6.		for new j=1 to n
+7.			yi = yi + aij * xj
+8.	return y
+
+spawn n copies with different values of i
+
+Divide and conquer approach to the loop iteration;
+Subproblems of size n/2
+
+Bound Tp < T1/p + Tinfinity
+Schedulers close to this bound
+P = 32, T32 = 65 seconds
+Optimization T32' = 40 seconds
+T1 = 2048, Tinf = 1
+T32 ~= T1/32 + Tinf = 65 seconds
+T1' = 1024, Tinf' = 8
+T32' ~= T1'/32 + Tinf' = 40 seconds
+
+Run on 512 Processors.
+T512 ~= 2048/512 + 1 = 5 seconds
+T512' ~= 1024/512 + 8 = 10 seconds 

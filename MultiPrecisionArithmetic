@@ -1,0 +1,92 @@
+Integers (Maybe rationals)
+GMP - Gnu Multi Precision
+Type mpz_t - big integer type
+Three Components:
+	_md_size is # of words (limbs) Use this for size as well
+	_mp_d array of words (data)  Absolute Value of Integer
+	_mp_alloc # of words allocated
+
+Multiplication
+Schoolbook or "Foil method"
+O(mn) m,n # of words in the operands
+Improvements to Multiplication
+1) Karatsuba's Method
+
+GMP:
+1) Karatsuba
+2) 3-way Toom
+3) 4-way Toom
+6) FFT
+
+GMP GCD's
+1) Small Binary GCD
+2) Lehmer's Method - Euclidean quotient "depends generally on the first few
+digits of the number"
+Obtain Quotient usually with a single precision operation.
+
+
+n a positive integer; a exists in ZZ
+[a]n = { a + kn : k exists in ZZ}
+There are n unique "equivalence classes";
+[0]n, [1]n, ..., [n-1]n
+Just write
+0,1,2,...,n-1
+
+A group (S, .) is a set S along with a binary operation(.) on S such that:
+	1) For all a, b in the set S, a.b in the set (closure)
+	2) There exists e in S s.t. a.e = e.a = a For all a in S (identity)
+	3) For every a in the set, there exists a (b) in the set such that
+	a.b = b.a = e (inverse) 
+	4) There exists a,b,c in S such that a.(b.c) = (a.b).c (associative)
+
+Ex: V^n set of n-long binary vectors
+XOR is bit-wise XOR
+(V^n, XOR) is a group.
+1) x = (x1,x2,...,xn)
+   y = (y1,y2,...,yn)
+	x XOR y = (x1 XOR y1, x2 XOR y2, ..., xn XOR yn)
+2) e = (0,0,0,...,0)
+3) a XOR a = e
+4) Follows from associativity of XOR
+
+A group is ableian if For all a,b in S a.b = b.a
+A group is finite if |s| < infinity
+Define an operator on ZZn = { [0]n, [1]n,...,[n-1]n}
+x in [a]n, y in [b]n
+x = a+kn      y = b+ln
+x+y = (a+b) + (k+l)n in [a+b]n
+
+So, the operation [a]n + [b]n = [a+b]n is well defined. Similarly, the product
+is also well define: [a]n * [b]n = [a*b]n is well defined.
+
+ZZn along with + as defined is a finite abelian group
+Proof:
+	Closure: is done.
+	Identity: [0]n + [a]n = [a]n = [a]n + [0]n
+	Inverse: [a]n + [-a]n = [0]n = [-a]n + [a]n
+	Associativity: Follows from "regular" addition
+	Commutativity: Follows from "regular" addition
+	Finite: Size of ZZn = n
+
+Ex: ZZ6
+
++ 0 1 2 3 4 5 
+0 0 1 2 3 4 5
+1 1 2 3 4 5 0
+2 2 3 4 5 0 1
+3 3 4 5 0 1 2
+4 4 5 0 1 2 3
+5 5 0 1 2 3 4
+
+Let ZZn* is the elements of ZZn that are relatively prime to n.
+ZZn* = {[a]n : gcd(a,n) = 1}
+Note: This is well defined b/c gcd(a+kn, n) = gcd(a,n)
+Let [a]n be in ZZn*; then gcd(a,n) = 1, so there exists x and y in ZZ s.t ax+ny=1
+So Ax =1(modn) CONGRUENT
+
+Multiplicative Identity is 1 ([1]n) since [1]n*[a]n = [a]n = [a]n*[1]n
+So [a]n*[x]n = [1]n So X is the inverse of a in ZZn*
+
+ZZn* with . as defined is a finite abelian group.
+
+

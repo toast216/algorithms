@@ -1,0 +1,59 @@
+ZZ = {...,-2,-1,0,1,2,...}
+NN = {0,1,2,3,....}
+
+Divisibility:
+Integers a, d. d divides a written d|a if a = dk, k <- ZZ
+"a is a multiple of d"
+Note: if a  = dk, then a = (-d)(-k)
+If d > 0 and d|a, then d is a divisor of a.
+
+An integer p > 1 is prime if its only divisors are
+1 and p. An integer a > 1 that is not prime is composite.
++-1 are "special". They're the units of the integers, ie. 
+they both have a multiplicative inverse.
+1*1 = 1
+(-1)(-1) = 1
+
+The "Division" or "QR" Theorem
+a any ZZ, n a positive integer.
+there exists unique integers q and r
+with r between 0 and n, such that a = nq + r
+q = floor a/n
+r = a mod n
+
+Proof: S set of all non-negative integers of the form a-kn, k any ZZ.
+The set S is not empty: a=>0, then a-0*n exists in the set S
+a < 0, then a-an = a(1-n) exists in the set S
+
+Let r be the smallest element of S.
+
+Then there is some q any ZZ such that r=a-qn, or a=qn+r
+Claim r < n; suppose not, then
+a-(q+1)n = a-nq-n = r-n >= 0 
+r-n<r =><= CONTRADICTION.
+Therefore r > n
+
+Define equivalence class modulo of a modulo n:
+[a]n = {a + kn: k any ZZ}
+Ex: [3]7 = {...,-11,-4,3,10,17,...}
+
+Common Divisors
+d|a, d|b the d is a common divisor of a and b.
+
+The greatest common divisor of a and b, gcd(a,b) is the largest common
+division of a and b.
+
+Theorem: a,b integers, not both zero, the gcd(a,b)is the smallest positive
+element of S = {ax + by; x,y any ZZ}
+
+Proof: Let s is the smallest element of S. Let s = ax + by for some integers
+x and y.
+
+Let q= floor(a/s)
+a mod s = a - qs
+= a-q(ax+by)
+= a(1-qx) + by is in S
+But a mod s < S and s is the smallest element of S.
+Therefore a mod s = 0. Or s|a.
+Same argument shows s|b. S is a common division of a,b.
+
